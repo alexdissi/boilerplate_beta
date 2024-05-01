@@ -3,7 +3,7 @@ import cryptoRandomString from "crypto-random-string"
 import {passwordForgotSchema} from "@/validator/registration"
 
 import {render} from "@react-email/render"
-import {ChangePasswordEmail} from "@/emails/resetPassword";
+import {ChangePasswordEmail} from "../../../../../../emails/resetPassword";
 import prisma from "@/lib/db";
 import {sendMail} from "@/lib/mailer";
 
