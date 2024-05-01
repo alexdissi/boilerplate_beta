@@ -10,6 +10,7 @@ import { LoadingButton } from "@/components/ui/buttons";
 import { useTranslations } from "next-intl";
 import { UpdateInfoInput, updateInfoSchema } from "@/validator/user";
 import { useSession } from "next-auth/react";
+import {Label} from "@/components/ui/label";
 
 export default function ChangeInfo({
                                        id,
@@ -65,27 +66,30 @@ export default function ChangeInfo({
                 className="flex flex-col gap-5"
                 onSubmit={handleSubmit(onSubmitHandler)}
             >
-                <div>
-                    <Input
-                        type="email"
-                        placeholder={t("Email")}
-                        defaultValue={email}
-                        disabled
-                    />
-                </div>
-                <div>
+                <div className="flex flex-col gap-3 items-start">
+                    <Label>{t("name")}</Label>
                     <Input
                         type="text"
-                        placeholder={t("Name")}
+                        placeholder={t("name")}
                         defaultValue={name}
                         disabled
                     />
                 </div>
-                <div>
+                <div className="flex flex-col gap-3 items-start">
+                    <Label>{t("email")}</Label>
+                    <Input
+                        type="email"
+                        placeholder={t("email")}
+                        defaultValue={email}
+                        disabled
+                    />
+                </div>
+                <div className="flex flex-col gap-3 items-start">
+                    <Label>{t("username")}</Label>
                     <Input
                         type="text"
                         {...register("username")}
-                        placeholder={t("UsernameLabel")}
+                        placeholder={t("usernameLabel")}
                         defaultValue={username}
                     />
                     {errors.username && (
@@ -95,9 +99,9 @@ export default function ChangeInfo({
                     )}
                 </div>
                 {submitting ? (
-                    <LoadingButton />
+                    <LoadingButton/>
                 ) : (
-                    <Button type="submit">{t("Modify")}</Button>
+                    <Button type="submit">{t("modify")}</Button>
                 )}
             </form>
         </>

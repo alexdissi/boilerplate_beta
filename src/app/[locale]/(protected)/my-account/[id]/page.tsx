@@ -9,6 +9,7 @@ import {
 import { getTranslations } from "next-intl/server";
 import ChangeInfo from "@/components/user/changeInfo";
 import {auth} from "@/lib/auth";
+import UploadProfilPicture from "@/components/user/uploadProfilPicture";
 
 export default async function MyAccount({
                                             params,
@@ -21,11 +22,12 @@ export default async function MyAccount({
     return (
         <Card>
             <CardHeader>
-                <CardTitle>{t("General")}</CardTitle>
+                <CardTitle>{t("general")}</CardTitle>
                 <CardDescription>{t("titleEdit")}</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className={"flex flex-col gap-4"}>
+                    <UploadProfilPicture userPicture={session?.user.image as string} />
                     <ChangeInfo
                         id={params.id}
                         name={session?.user.name as string}

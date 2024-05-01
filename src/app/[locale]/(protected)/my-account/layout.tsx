@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { useLocale } from "next-intl";
 import {auth} from "@/lib/auth";
+import Navigation from "@/components/common/navigation";
 
 export default async function Layout({ children }: { children: ReactNode }) {
     const session = await auth();
@@ -9,6 +10,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
 
     return (
         <div className="flex min-h-screen w-full flex-col">
+            <Navigation />
             <main className="flex-1 bg-muted/40 p-4 md:p-10">
                 <div className="mx-auto max-w-6xl gap-2">
                     <h1 className="text-3xl font-semibold">Settings</h1>
