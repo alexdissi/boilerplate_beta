@@ -40,12 +40,6 @@ export const loginUserSchema = object({
     ),
 })
 
-export const magicLinkSchema = object({
-    email: string({ required_error: "emailrequired" })
-        .min(1, "emailrequired")
-        .email("emailvalid"),
-})
-
 export const passwordForgotSchema = object({
     email: string({ required_error: "emailrequired" })
         .min(1, "emailrequired")
@@ -69,6 +63,5 @@ export const passwordReset = object({
 
 export type CreateUserInput = TypeOf<typeof createUserSchema>
 export type LoginUserInput = TypeOf<typeof loginUserSchema>
-export type MagicLinkInput = TypeOf<typeof magicLinkSchema>
 export type PasswordForgotInput = TypeOf<typeof passwordForgotSchema>
 export type PasswordResetInput = TypeOf<typeof passwordReset>
