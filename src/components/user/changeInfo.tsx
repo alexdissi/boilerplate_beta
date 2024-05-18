@@ -47,14 +47,14 @@ export default function ChangeInfo({
             });
 
             if (!response.ok) {
-                throw new Error(t("registerFailed"));
+                throw new Error(t("updateProfilFailed"));
             }
 
-            toast.success(t("UpdateProfilSuccess"));
+            toast.success(t("updateProfilSuccess"));
             await update({ ...session?.user, username: data.username });
             router.refresh();
         } catch (error: string | any) {
-            toast.error(error.message || t("UpdateProfilFailed"));
+            toast.error(error.message || t("updateProfilFailed"));
         } finally {
             setSubmitting(false);
         }

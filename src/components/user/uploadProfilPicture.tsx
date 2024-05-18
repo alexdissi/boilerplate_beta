@@ -41,7 +41,7 @@ export default function UploadProfilePicture({userPicture}: { userPicture: strin
             const imageUrl = await response.json();
             await update({ ...session?.user, image: imageUrl });
             toast.success(t("uploadSuccess"));
-            router.refresh();
+            router.refresh()
         } catch (error) {
             setLoading(false);
         }

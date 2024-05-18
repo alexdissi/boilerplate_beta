@@ -1,12 +1,10 @@
 import {NextResponse} from "next/server"
 import cryptoRandomString from "crypto-random-string"
 import {passwordForgotSchema} from "@/validator/registration"
-
 import {render} from "@react-email/render"
 import {ChangePasswordEmail} from "../../../../../../emails/resetPassword";
 import prisma from "@/lib/db";
 import {sendMail} from "@/lib/mailer";
-
 
 export async function POST(req: Request) {
     const { email } = passwordForgotSchema.parse(await req.json())

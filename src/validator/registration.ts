@@ -46,22 +46,22 @@ export const passwordForgotSchema = object({
         .email("emailvalid"),
 })
 
-export const passwordReset = object({
-    password: string({ required_error: "passwordrequired" })
+export const passwordResetSchema = object({
+    oldPassword: string({ required_error: "passwordrequired" })
         .min(1, "passwordrequired")
         .min(8, "passwordminlength")
         .max(32, "passwordmaxlength")
         .regex(passwordValidation, "passwordRegex"),
-    passwordConfirm: string({
-        required_error: "confirmpasswordrequired",
-    }).min(1, "confirmpasswordrequired"),
-}).refine((data) => data.password === data.passwordConfirm, {
-    path: ["passwordConfirm"],
-    message: "confirmpasswordmatch",
+    newPassword: string({ required_error: "Password is required" })
+        .min(1, "confirmpasswordrequired")
+        .min(8, "passwordminlength")
+        .max(32, "passwordmaxlength")
+        .regex(passwordValidation, "passwordRegex"),
 })
+
 
 
 export type CreateUserInput = TypeOf<typeof createUserSchema>
 export type LoginUserInput = TypeOf<typeof loginUserSchema>
 export type PasswordForgotInput = TypeOf<typeof passwordForgotSchema>
-export type PasswordResetInput = TypeOf<typeof passwordReset>
+export type PasswordResetInput = TypeOf<typeof passwordResetSchema>

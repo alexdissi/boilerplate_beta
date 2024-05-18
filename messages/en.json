@@ -95,6 +95,14 @@
     "name": "Name",
     "username": "Username",
     "uploadSuccess": "Upload successful",
-    "uploadFailed": "Upload failed"
+    "uploadFailed": "Upload failed",
+    "changePassword": "Change Password"
+  },
+  "ChangePassword": {
+    "title": "Change your password",
+    "placeholderOldPassword": "Old Password",
+    "placeholderNewPassword": "New Password",
+    "description": "Enter your old password and your new password",
+    "pleasewait": "Please wait"
   }
 }

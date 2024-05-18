@@ -2,8 +2,10 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import prisma from "@/lib/db";
+import {stripe} from "@/lib/stripe";
 
 export const { handlers, auth } = NextAuth({
+    secret: process.env.AUTH_SECRET,
     providers: [
         Credentials({
             credentials: {
@@ -44,6 +46,7 @@ export const { handlers, auth } = NextAuth({
                 token.id = user.id;
                 token.name = user.name;
                 token.username = user.username;
+                token.image = user.image;
             }
 
             if (trigger === "update" && session) {

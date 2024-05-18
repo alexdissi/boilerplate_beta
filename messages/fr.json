@@ -95,6 +95,14 @@
     "name": "Nom",
     "username": "Nom d'utilisateur",
     "uploadSuccess": "Téléchargement réussi",
-    "uploadFailed": "Le téléchargement a échoué"
+    "uploadFailed": "Le téléchargement a échoué",
+    "changePassword": "Changer le mot de passe"
+  },
+  "ChangePassword": {
+    "title": "Changer le mot de passe",
+    "placeholderOldPassword": "Ancien mot de passe",
+    "placeholderNewPassword": "Nouveau mot de passe",
+    "description": "Pour des raisons de sécurité, vous devez confirmer votre mot de passe avant de continuer.",
+    "pleasewait": "Veuillez patienter..."
   }
 }
