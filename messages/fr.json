@@ -96,7 +96,10 @@
     "username": "Nom d'utilisateur",
     "uploadSuccess": "Téléchargement réussi",
     "uploadFailed": "Le téléchargement a échoué",
-    "changePassword": "Changer le mot de passe"
+    "changePassword": "Changer le mot de passe",
+    "subscription": "Abonnement",
+    "support": "Support",
+    "deleteAccount": "Supprimer le compte"
   },
   "ResetPassword": {
     "title": "Réinitialisez votre mot de passe",

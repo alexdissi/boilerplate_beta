@@ -10,6 +10,8 @@ export default async function Index() {
   const session = await auth();
   const locale = await getLocale();
 
+
+
   return (
       <main className={"flex flex-row"}>
           <SideBar username={session?.user.name as string} profilPicture={session?.user.image as string} id={session?.user.id as string} />
