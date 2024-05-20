@@ -4,10 +4,11 @@ import { useLocale } from "next-intl";
 import {auth} from "@/lib/auth";
 import Header from "@/components/common/header";
 import {redirect} from "next/navigation";
+import {getLocale} from "next-intl/server";
 
 export default async function Layout({ children }: { children: ReactNode }) {
     const session = await auth();
-    const locale = useLocale();
+    const locale = await getLocale();
 
     if (!session) {
         redirect(`/${locale}/auth/login`)
