@@ -104,5 +104,13 @@
     "placeholderNewPassword": "New Password",
     "description": "Enter your old password and your new password",
     "pleasewait": "Please wait"
+  },
+  "SideBar": {
+    "settings": "Settings",
+    "home": "Home",
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "calendar": "Calendar",
+    "messages": "Messages"
   }
 }

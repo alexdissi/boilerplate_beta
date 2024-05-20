@@ -5,19 +5,19 @@ import {zodResolver} from "@hookform/resolvers/zod"
 import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {toast} from "sonner"
-import {usePathname, useRouter} from "next/navigation"
 import {Checkbox} from "@/components/ui/checkbox"
-import {useTranslations} from "next-intl"
+import {useLocale, useTranslations} from "next-intl"
 import {CreateUserInput, createUserSchema} from "@/validator/registration"
 import {Separator} from "@/components/ui/separator"
 import Link from "next/link"
 import {LoadingButton} from "@/components/ui/buttons";
+import {useRouter} from "next/navigation";
 
 export default function RegisterForm() {
-    const local = usePathname().split("/")[1]
+    const local = useLocale()
+    const router = useRouter()
     const redirect: string = local === "en" ? "/en/auth/login" : "/fr/auth/login"
     const t = useTranslations("Register")
-    const router = useRouter()
     const [loading, setLoading] = useState(false)
     const methods = useForm<CreateUserInput>({
         resolver: zodResolver(createUserSchema),
@@ -44,9 +44,7 @@ export default function RegisterForm() {
             }
 
             toast.success(t("registerSuccess"))
-            setTimeout(() => {
-                router.push(redirect)
-            }, 1000)
+            router.push(redirect)
         } catch (error: string | any) {
             toast.error(t("registerFailed"))
         } finally {

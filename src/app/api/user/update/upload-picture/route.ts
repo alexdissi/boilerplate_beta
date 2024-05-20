@@ -24,6 +24,7 @@ export async function POST(req: Request) {
                 image: imageUrl
             },
         })
+
         return NextResponse.json(imageUrl)
     } catch (error) {
         return NextResponse.json({error: "Error"})

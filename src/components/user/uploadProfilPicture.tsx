@@ -13,7 +13,6 @@ export default function UploadProfilePicture({userPicture}: { userPicture: strin
     const {data: session, update} = useSession();
     const router = useRouter();
     const t = useTranslations("User");
-
     const generateRandomFileName = (originalName: string) => {
         const timestamp = new Date().getTime();
         const randomString = Math.random().toString(36).substring(2, 8);
@@ -21,7 +20,6 @@ export default function UploadProfilePicture({userPicture}: { userPicture: strin
 
         return `${timestamp}_${randomString}.${extension}`;
     };
-
     const onSubmit = async (file: File) => {
         try {
             const formData = new FormData();
@@ -35,6 +33,7 @@ export default function UploadProfilePicture({userPicture}: { userPicture: strin
             if (!response.ok) {
                 toast.error(t("uploadFailed"));
                 setLoading(false);
+
                 return;
             }
 
@@ -46,7 +45,6 @@ export default function UploadProfilePicture({userPicture}: { userPicture: strin
             setLoading(false);
         }
     };
-
     const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const fileList = e.target.files;
 

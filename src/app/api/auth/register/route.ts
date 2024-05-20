@@ -5,6 +5,7 @@ import { WelcomeEmail } from "../../../../../emails/welcome";
 import prisma from "@/lib/db";
 import { sendMail } from "@/lib/mailer";
 import { render } from "@react-email/render";
+import {stripe} from "@/lib/stripe";
 
 export async function POST(req: Request) {
     try {
@@ -12,6 +13,7 @@ export async function POST(req: Request) {
         const hashedPassword: string = await hash(password, 12);
         const name: string = `${firstName} ${lastName}`;
         const cleanEmail: string = email.toLowerCase();
+        const defaultAvatar: string = `https://api.dicebear.com/7.x/initials/svg?seed=${name}`
 
         if (!name || !email || !password) {
             return NextResponse.json("Missing Fields", { status: 400 });
@@ -27,11 +29,17 @@ export async function POST(req: Request) {
             return NextResponse.json("User.ts already exists!", { status: 500 });
         }
 
+        const stripeCustomer = await stripe.customers.create({
+            email
+        })
+
         await prisma.user.create({
             data: {
                 name,
                 email: cleanEmail,
                 password: hashedPassword,
+                image: defaultAvatar,
+                stripeCustomerId: stripeCustomer.id
             },
         });
 
@@ -40,6 +48,7 @@ export async function POST(req: Request) {
         return NextResponse.json("User.ts created successfully!", { status: 200 });
     } catch (error) {
         console.error("Une erreur s'est produite :", error);
+
         return NextResponse.json("Une erreur s'est produite lors du traitement de la requête.", { status: 500 });
     }
 }

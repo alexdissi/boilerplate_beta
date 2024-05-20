@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import {auth} from "@/lib/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/lib/db";
@@ -18,9 +20,7 @@ export async function GET() {
             stripeCustomerId: true,
         }
     })
-
     const stripeCustomerID = user?.stripeCustomerId as string
-
     const stripeSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerID,
         return_url: `${process.env.NEXTAUTH_URL}/fr`,

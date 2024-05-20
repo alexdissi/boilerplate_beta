@@ -24,6 +24,7 @@ export async function uploadFileToS3(file: any, fileName: string) {
 
 export async function uploadImage(file: any) {
     const awsUrl = process.env.AWS_S3_BUCKET_URL
+
     if (!file) {
         return NextResponse.json({error: "File is required."}, {status: 400})
     }

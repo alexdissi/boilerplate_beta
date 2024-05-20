@@ -104,5 +104,13 @@
     "placeholderNewPassword": "Nouveau mot de passe",
     "description": "Pour des raisons de sécurité, vous devez confirmer votre mot de passe avant de continuer.",
     "pleasewait": "Veuillez patienter..."
+  },
+  "SideBar":{
+    "settings": "Reglages",
+    "home": "Accueil",
+    "projects": "Projets",
+    "tasks": "Taches",
+    "calendar": "Calendrier",
+    "messages": "Messages"
   }
 }

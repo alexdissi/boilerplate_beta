@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Menu, MoveRight, X } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
     NavigationMenu, NavigationMenuContent,
@@ -21,6 +21,7 @@ interface HeaderProps {
     userName: string;
 }
 
+// eslint-disable-next-line max-lines-per-function
 const Header: React.FC<HeaderProps> = ({ session, userName }) => {
     const [isOpen, setOpen] = useState(false);
     const locale = useLocale()
@@ -54,6 +55,7 @@ const Header: React.FC<HeaderProps> = ({ session, userName }) => {
             ],
         },
     ];
+
     return (
         <header className="w-full">
             <div className="container relative mx-auto min-h-20 flex gap-10 flex-row lg:grid lg:grid-cols-3 items-center">
