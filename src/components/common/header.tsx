@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ session, userName }) => {
     const navigationItems = [
         {
             title: "Home",
-            href: `${locale}/`,
+            href: "/",
             description: "",
         },
         {
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ session, userName }) => {
     ];
 
     return (
-        <header className="w-full">
+        <header className="w-full absolute top-0">
             <div className="container relative mx-auto min-h-20 flex gap-10 flex-row lg:grid lg:grid-cols-3 items-center">
                 <div className="justify-start items-center gap-4 lg:flex hidden flex-row">
                     <NavigationMenu className="flex justify-start items-start">

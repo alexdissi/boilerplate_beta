@@ -47,12 +47,12 @@ export const passwordForgotSchema = object({
 })
 
 export const passwordResetSchema = object({
-    oldPassword: string({ required_error: "passwordrequired" })
+    password: string({ required_error: "passwordrequired" })
         .min(1, "passwordrequired")
         .min(8, "passwordminlength")
         .max(32, "passwordmaxlength")
         .regex(passwordValidation, "passwordRegex"),
-    newPassword: string({ required_error: "Password is required" })
+    passwordConfirm: string({ required_error: "Password is required" })
         .min(1, "confirmpasswordrequired")
         .min(8, "passwordminlength")
         .max(32, "passwordmaxlength")

@@ -27,7 +27,7 @@
     "buttonLogin": "Login",
     "buttonEmail": "Login with Email",
     "existingAccount": "Already have an account?",
-    "noAccount": "Don't have an account?",
+    "noAccount": "Don't have an account ?",
     "forgotPassword": "Forgot your password ?",
     "login": "Login",
     "loginSuccess": "Successfully logged in",
@@ -65,6 +65,12 @@
     "passwordResetEmail": "Enter your email below to reset your password",
     "reset": "Reset",
     "linkSent": "The link has been sent to your email"
+  },
+  "ResetPassword": {
+    "title": "Reset your password",
+    "placeholderPassword": "New Password",
+    "placeholderConfirmPassword": "Confirm Password",
+    "button": "Reset Password"
   },
   "User": {
     "title": "Profile",

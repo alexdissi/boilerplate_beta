@@ -31,7 +31,7 @@
     "buttonLogin": "Connexion",
     "buttonEmail": "Connexion avec email",
     "existingAccount": "Vous avez déjà un compte?",
-    "noAccount": "Vous n'avez pas de compte?",
+    "noAccount": "Vous n'avez pas de compte ?",
     "forgotPassword": "Mot de passe oublié ?",
     "login": "Connexion",
     "register": "S'inscrire",
@@ -97,6 +97,12 @@
     "uploadSuccess": "Téléchargement réussi",
     "uploadFailed": "Le téléchargement a échoué",
     "changePassword": "Changer le mot de passe"
+  },
+  "ResetPassword": {
+    "title": "Réinitialisez votre mot de passe",
+    "placeholderPassword": "Nouveau mot de passe",
+    "placeholderConfirmPassword": "Confirmer le mot de passe",
+    "button": "Réinitialiser le mot de passe"
   },
   "ChangePassword": {
     "title": "Changer le mot de passe",

@@ -13,19 +13,20 @@ import {
   SettingsIcon
 } from "lucide-react";
 import {LogoutButton} from "@/components/ui/buttons";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 
 const sidebarItems = [
-  { href: "#", icon: HomeIcon, label: "home" },
+  { href: "/", icon: HomeIcon, label: "home" },
   { href: "#", icon: BriefcaseIcon, label: "projects" },
   { href: "#", icon: CircleCheckIcon, label: "tasks" },
   { href: "#", icon: CalendarIcon, label: "calendar" },
   { href: "#", icon: MessageSquareIcon, label: "messages" }
 ];
 
-export function SideBar({profilPicture , username}: {profilPicture: string , username: string}) {
+export function SideBar({profilPicture , username , id}: {profilPicture: string , username: string , id: string}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const t = useTranslations("SideBar")
+  const locale = useLocale()
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
@@ -58,7 +59,7 @@ export function SideBar({profilPicture , username}: {profilPicture: string , use
             <div className={`flex flex-col items-center justify-center gap-4 ${isExpanded && "w-48"}`}>
             <Link
                 className="flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:ring-gray-300"
-                href="#"
+                href={`/${locale}/my-account/${id}`}
             >
               <SettingsIcon/>
               <span className={`text-xs mt-1 duration-500 ${isExpanded ? "flex" : "hidden"}`}>{t("settings")}</span>

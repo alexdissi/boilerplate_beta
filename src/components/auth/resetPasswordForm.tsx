@@ -6,22 +6,22 @@ import {toast} from "sonner"
 import {zodResolver} from "@hookform/resolvers/zod"
 import {SubmitHandler, useForm} from "react-hook-form"
 import {Button} from "@/components/ui/button"
-import {useTranslations} from "next-intl"
-import {passwordReset, PasswordResetInput} from "@/validator/registration"
+import {useLocale, useTranslations} from "next-intl"
+import {passwordResetSchema, PasswordResetInput} from "@/validator/registration"
 import {LoadingButton} from "@/components/ui/buttons";
 
-export default function ResetPasswordForm({token, title}: { token: string , title: string}) {
-    const local = usePathname().split("/")[1]
+export default function ResetPasswordForm({token}: { token: string}) {
+    const local = useLocale()
     const redirectLogin: string = local === "en" ? "/en/auth/login" : "/fr/auth/login"
     const redirectForgot: string = local === "en" ? "/en/auth/forgot-password" : "/fr/auth/forgot-password"
-    const t = useTranslations("PasswordReset")
+    const t = useTranslations("ResetPassword")
     const [user, setUser] = useState({
         email: "",
     })
     const router = useRouter()
     const [loading, setLoading] = useState(false)
     const methods = useForm<PasswordResetInput>({
-        resolver: zodResolver(passwordReset),
+        resolver: zodResolver(passwordResetSchema),
     })
 
     useEffect(() => {
@@ -91,7 +91,7 @@ export default function ResetPasswordForm({token, title}: { token: string , titl
                 <div
                     className="shadow-xl border mx-1 md:mx-0 rounded-xl p-8 sm:p-10">
                     <h1 className="tracking-tight text-center text-title-font font-title-weight">
-                        {title}
+                        {t("title")}
                     </h1>
                     <form className='flex flex-col mx-auto gap-3 w-full mt-2' onSubmit={handleSubmit(onSubmit)}>
                         <div>
@@ -113,7 +113,7 @@ export default function ResetPasswordForm({token, title}: { token: string , titl
                         {loading ? (
                             <LoadingButton />
                         ) : (
-                            <Button type="submit">{t("buttonResetPassword")}</Button>)
+                            <Button type="submit">{t("button")}</Button>)
                         }
                     </form>
                 </div>

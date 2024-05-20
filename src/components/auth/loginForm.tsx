@@ -8,12 +8,14 @@ import { signIn } from "next-auth/react"
 import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import Link from "next/link"
-import {useTranslations} from "next-intl"
+import {useLocale, useTranslations} from "next-intl"
 import {LoginUserInput, loginUserSchema} from "@/validator/registration"
 import {LoadingButton} from "@/components/ui/buttons";
 
 export const LoginForm = () => {
+    const local = useLocale()
     const router = useRouter()
+    const redirect: string = local === "en" ? "/en/auth/register" : "/fr/auth/register"
     const t = useTranslations("Register")
     const [submitting, setSubmitting] = useState(false)
     const methods = useForm<LoginUserInput>({
@@ -88,6 +90,9 @@ export const LoginForm = () => {
                         {t("buttonLogin")}
                     </Button>)}
             </form>
+            <p className="text-center">{t("noAccount")} <Link className="underline " href={redirect}>
+                {t("register")}
+            </Link></p>
         </>
     )
 }
