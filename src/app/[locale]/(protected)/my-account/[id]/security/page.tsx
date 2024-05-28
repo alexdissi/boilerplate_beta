@@ -1,4 +1,4 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import PasswordReset from "@/components/user/password-reset";
 import {getTranslations} from "next-intl/server";
 
@@ -16,7 +16,6 @@ export default async function Page() {
                    <PasswordReset />
                 </div>
             </CardContent>
-            <CardFooter className="border-t px-6 py-4"></CardFooter>
         </Card>
     )
 }

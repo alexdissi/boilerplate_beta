@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useState} from "react"
-import {usePathname, useRouter} from "next/navigation"
+import {useRouter} from "next/navigation"
 import {Input} from "@/components/ui/input"
 import {toast} from "sonner"
 import {zodResolver} from "@hookform/resolvers/zod"

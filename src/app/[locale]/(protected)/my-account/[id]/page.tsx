@@ -2,7 +2,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
@@ -36,7 +35,6 @@ export default async function MyAccount({
                     />
                 </div>
             </CardContent>
-            <CardFooter className="border-t px-6 py-4"></CardFooter>
         </Card>
     );
 }
