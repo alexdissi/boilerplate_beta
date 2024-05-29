@@ -13,10 +13,9 @@ import {
   MessageSquareIcon,
   SettingsIcon,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { LogoutButton } from "@/components/ui/buttons";
 import { useLocale, useTranslations } from "next-intl";
-import ToggleTheme from "@/components/ui/toggleTheme";
-
 const sidebarItems = [
   { href: "/dashboard", icon: HomeIcon, label: "home" },
   { href: "/projects", icon: BriefcaseIcon, label: "projects" },
@@ -46,9 +45,13 @@ export function SideBar({
   }));
 
   return (
-    <div className="flex bg-navigation">
-      <div
-        className={`h-full ${isExpanded ? "w-56" : "w-24"} shrink-0 border-r border-gray-200 dark:border-gray-800 flex flex-col items-center justify-between py-6 transition-width duration-300`}
+    <div className="flex bg-[#111415] h-screen rounded-tr rounded-br">
+      <motion.div
+        initial={{ width: 96 }}
+        animate={{ width: isExpanded ? 208 : 96 }}
+        exit={{ width: 96 }}
+        className="shrink-0 flex flex-col items-center justify-between py-6 transition-width"
+        transition={{ type: "spring", stiffness: 250, damping: 30 }}
       >
         <div
           className={`flex flex-col items-center justify-center gap-6 ${isExpanded && "w-56"}`}
@@ -60,7 +63,13 @@ export function SideBar({
             alt={"logo"}
             className={"w-28 h-14"}
           />
-          <Button variant="ghost" onClick={toggleSidebar}>
+          <Button
+            variant="ghost"
+            className={
+              "text-gray-500 hover:bg-gray-800  hover:text-gray-50 duration-100"
+            }
+            onClick={toggleSidebar}
+          >
             {isExpanded ? <ArrowLeft /> : <ArrowRight />}
           </Button>
           <div
@@ -69,7 +78,7 @@ export function SideBar({
             {localizedSidebarItems.map((item, index) => (
               <Link
                 key={index}
-                className="flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:ring-gray-300"
+                className="flex flex-row gap-3 items-start w-full rounded-2xl p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 hover:bg-gray-800 hover:text-gray-50 dark:focus:ring-gray-300"
                 href={item.href}
               >
                 <item.icon />
@@ -86,9 +95,8 @@ export function SideBar({
           <div
             className={`flex flex-col items-center justify-center gap-4 ${isExpanded && "w-48"}`}
           >
-            <ToggleTheme />
             <Link
-              className="flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:ring-gray-300"
+              className="flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 hover:bg-gray-800 hover:text-gray-50 dark:focus:ring-gray-300"
               href={`/${locale}/my-account/${id}`}
             >
               <SettingsIcon />
@@ -115,7 +123,7 @@ export function SideBar({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

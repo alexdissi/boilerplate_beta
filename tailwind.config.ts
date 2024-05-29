@@ -24,7 +24,7 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        navigation: "hsl(211 32% 0%)",
+        sidebar: "#020401",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

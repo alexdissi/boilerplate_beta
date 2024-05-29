@@ -15,23 +15,18 @@ export default async function Layout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <main className="flex flex-col">
-      <Nav />
-      <div className={"flex flex-row h-[91vh]"}>
-        <SideBar
-          username={session?.user.name as string}
-          profilPicture={session?.user.image as string}
-          id={session.user.id as string}
-        />
-        <div className="flex-1 bg-background p-4 md:px-5">
-          <div className="mx-auto max-w-6xl gap-2">
-            <h1 className="text-3xl font-semibold">Settings</h1>
-          </div>
-          <div className="mx-auto max-w-6xl grid grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-            <SettingMenu />
-            <div className="grid gap-6">{children}</div>
-          </div>
-        </div>
+    <main className="flex h-screen">
+      <SideBar
+        username={session?.user.name as string}
+        profilPicture={session?.user.image as string}
+        id={session.user.id as string}
+      />
+      <div className="flex flex-col flex-1 h-full">
+        <Nav />
+        <main className="flex flex-row justify-center gap-20 overflow-auto p-8">
+          <SettingMenu />
+          <div className={"w-2/4"}>{children}</div>
+        </main>
       </div>
     </main>
   );

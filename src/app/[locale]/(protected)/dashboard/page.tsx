@@ -5,6 +5,10 @@ export default function Dashboard() {
     <>
       <h1>Dashboard</h1>
       <AreaChartHero />
+      <AreaChartHero />
+      <AreaChartHero />
+      <AreaChartHero />
+      <AreaChartHero />
     </>
   );
 }
