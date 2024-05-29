@@ -44,7 +44,7 @@ export const LoginForm = () => {
         toast.error(t("loginFailed"));
       }
 
-      toast.success(t("loginSuccess"));
+      toast.success(t("loginSuccess"), { duration: 2000 });
       router.push(`/${local}/dashboard`);
     } catch (error: any) {
       toast.error(t("loginFailed"));

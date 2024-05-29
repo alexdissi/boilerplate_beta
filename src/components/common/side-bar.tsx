@@ -3,71 +3,47 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BriefcaseIcon,
-  CalendarIcon,
-  CircleCheckIcon,
-  HomeIcon,
-  MessageSquareIcon,
-  SettingsIcon,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, SettingsIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { LogoutButton } from "@/components/ui/buttons";
 import { useLocale, useTranslations } from "next-intl";
-const sidebarItems = [
-  { href: "/dashboard", icon: HomeIcon, label: "home" },
-  { href: "/projects", icon: BriefcaseIcon, label: "projects" },
-  { href: "/tasks", icon: CircleCheckIcon, label: "tasks" },
-  { href: "/calendar", icon: CalendarIcon, label: "calendar" },
-  { href: "/messages", icon: MessageSquareIcon, label: "messages" },
-];
+import SidebarItem from "@/data/sidebarItem";
+import { Sidebar } from "@/interfaces/sidebar";
+import { Separator } from "@/components/ui/separator";
 
-export function SideBar({
-  profilPicture,
-  username,
-  id,
-}: {
-  profilPicture: string;
-  username: string;
-  id: string;
-}) {
+const sidebarItems = SidebarItem;
+
+export function SideBar({ profilPicture, username, id }: Sidebar) {
   const [isExpanded, setIsExpanded] = useState(false);
   const t = useTranslations("SideBar");
   const locale = useLocale();
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const pathname = usePathname();
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
   const localizedSidebarItems = sidebarItems.map((item) => ({
     ...item,
-    href: `/${locale}/${item.href}`,
+    href: `/${locale}${item.href}`,
   }));
 
   return (
-    <div className="flex bg-[#111415] h-screen rounded-tr rounded-br">
+    <div className="flex bg-[#111415] h-screen rounded-tr rounded-br relative border-r-slate-800 border">
+      {isExpanded && (
+        <span className="absolute top-0 left-[-3rem] bg-primary w-44 h-10 blur-3xl"></span>
+      )}
       <motion.div
         initial={{ width: 96 }}
         animate={{ width: isExpanded ? 208 : 96 }}
         exit={{ width: 96 }}
-        className="shrink-0 flex flex-col items-center justify-between py-6 transition-width"
-        transition={{ type: "spring", stiffness: 250, damping: 30 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col items-center justify-between py-6 transition-width"
       >
         <div
           className={`flex flex-col items-center justify-center gap-6 ${isExpanded && "w-56"}`}
         >
-          <img
-            src={
-              "https://seeklogo.com/images/C/corporate-company-logo-749CEE6ADC-seeklogo.com.png"
-            }
-            alt={"logo"}
-            className={"w-28 h-14"}
-          />
+          <img src="/app_logo.png" alt="logo" className="w-20 h-16" />
           <Button
             variant="ghost"
-            className={
-              "text-gray-500 hover:bg-gray-800  hover:text-gray-50 duration-100"
-            }
+            className="text-gray-500 hover:bg-gray-800 hover:text-gray-50 duration-100"
             onClick={toggleSidebar}
           >
             {isExpanded ? <ArrowLeft /> : <ArrowRight />}
@@ -78,8 +54,8 @@ export function SideBar({
             {localizedSidebarItems.map((item, index) => (
               <Link
                 key={index}
-                className="flex flex-row gap-3 items-start w-full rounded-2xl p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 hover:bg-gray-800 hover:text-gray-50 dark:focus:ring-gray-300"
                 href={item.href}
+                className={`flex flex-row gap-3 items-start w-full rounded-2xl p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:focus:ring-gray-300 ${pathname === item.href ? "bg-primary text-white" : "hover:bg-gray-800 hover:text-gray-50"}`}
               >
                 <item.icon />
                 <span
@@ -95,9 +71,10 @@ export function SideBar({
           <div
             className={`flex flex-col items-center justify-center gap-4 ${isExpanded && "w-48"}`}
           >
+            <Separator />
             <Link
-              className="flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 hover:bg-gray-800 hover:text-gray-50 dark:focus:ring-gray-300"
               href={`/${locale}/my-account/${id}`}
+              className={`flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:focus:ring-gray-300 ${pathname === `/${locale}/my-account/${id}` ? "bg-primary text-white" : "hover:bg-gray-800 hover:text-gray-50"}`}
             >
               <SettingsIcon />
               <span
@@ -107,20 +84,20 @@ export function SideBar({
               </span>
             </Link>
           </div>
-          <div className={"flex flex-row items-center gap-4"}>
-            <div className={"flex flex-row items-center gap-2"}>
+          <div className="flex flex-row items-center justify-center gap-4">
+            <div className="flex flex-row items-center gap-2">
               <img
                 src={profilPicture}
                 alt={`Avatar of ${username}`}
-                className={"w-10 h-10 rounded-full"}
+                className="w-10 h-10 rounded-full"
               />
-              <p className={`${isExpanded ? "flex" : "hidden"} text-sm`}>
+              <p
+                className={`text-xs text-white ${isExpanded ? "flex" : "hidden"}`}
+              >
                 {username}
               </p>
             </div>
-            <div className={`${isExpanded ? "flex" : "hidden"}`}>
-              <LogoutButton />
-            </div>
+            {isExpanded && <LogoutButton />}
           </div>
         </div>
       </motion.div>
