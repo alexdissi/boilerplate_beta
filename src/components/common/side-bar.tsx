@@ -24,6 +24,7 @@ export function SideBar({ profilPicture, username, id }: Sidebar) {
     ...item,
     href: `/${locale}${item.href}`,
   }));
+  const isSettingsActive = pathname.startsWith(`/${locale}/my-account/${id}`);
 
   return (
     <div className="flex bg-[#111415] h-screen rounded-tr rounded-br relative border-r-slate-800 border">
@@ -74,7 +75,7 @@ export function SideBar({ profilPicture, username, id }: Sidebar) {
             <Separator />
             <Link
               href={`/${locale}/my-account/${id}`}
-              className={`flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:focus:ring-gray-300 ${pathname === `/${locale}/my-account/${id}` ? "bg-primary text-white" : "hover:bg-gray-800 hover:text-gray-50"}`}
+              className={`flex flex-row gap-3 items-start w-full rounded-md p-3 text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-950 dark:focus:ring-gray-300 ${isSettingsActive ? "bg-primary text-white" : "hover:bg-gray-800 hover:text-gray-50"}`}
             >
               <SettingsIcon />
               <span

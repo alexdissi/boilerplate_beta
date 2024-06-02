@@ -25,7 +25,7 @@
     --border: 216 20% 50%;
     --input: 216 20% 18%;
     --ring: 216 100% 68.8%;
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
   .dark  {
     --gradient: linear-gradient(to top left,#1488CC,#2B32B2);
@@ -48,7 +48,7 @@
     --border: 216 20% 18%;
     --input: 216 20% 18%;
     --ring: 216 100% 68.8%;
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 }
 

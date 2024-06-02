@@ -31,7 +31,7 @@
     "forgotPassword": "Forgot your password ?",
     "login": "Login",
     "loginSuccess": "Successfully logged in",
-    "loginFailed": "Login failed, please try again",
+    "loginFailed": "Incorrect username or password",
     "registerSuccess": "Account created successfully",
     "registerFailed": "Account creation failed, please try again",
     "register": "Register",
@@ -111,7 +111,11 @@
     "placeholderOldPassword": "Old Password",
     "placeholderNewPassword": "New Password",
     "description": "Enter your old password and your new password",
-    "pleasewait": "Please wait"
+    "pleasewait": "Please wait",
+    "noAccountExists": "No account exists with this email",
+    "oldPasswordInvalid": "The current password is invalid",
+    "PasswordResetSuccess": "Password reset successful",
+    "PasswordResetFailed": "Password reset failed"
   },
   "SideBar": {
     "settings": "Settings",

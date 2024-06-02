@@ -37,15 +37,16 @@ export const LoginForm = () => {
         email: values.email,
         password: values.password,
       });
+
       setSubmitting(false);
 
       if (response?.error) {
         reset({ password: "" });
         toast.error(t("loginFailed"));
+      } else {
+        toast.success(t("loginSuccess"));
+        router.push(`/${local}/dashboard`);
       }
-
-      toast.success(t("loginSuccess"), { duration: 2000 });
-      router.push(`/${local}/dashboard`);
     } catch (error: any) {
       toast.error(t("loginFailed"));
     } finally {

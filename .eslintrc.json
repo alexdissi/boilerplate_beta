@@ -79,7 +79,6 @@
       "warn",
       40
     ],
-    "consistent-return": "error",
     "curly": [
       "error",
       "all"

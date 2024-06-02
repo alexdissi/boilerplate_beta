@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main className="w-full mt-4 md:mt-0 lg:grid lg:min-h-[600px] lg:grid-cols-2 h-screen">
+    <main className="bg-gradient-to-bl from-slate-50 to-sky-100 w-full mt-4 md:mt-0 lg:grid lg:min-h-[600px] lg:grid-cols-2 h-screen">
       <div className="flex items-center justify-center flex-col gap-5">
         {children}
       </div>

@@ -20,7 +20,7 @@
     "placeholderPassword": "Mot de passe",
     "placeholderConfirmPassword": "Confirmer le mot de passe",
     "loginSuccess": "Connexion réussie",
-    "loginFailed": "Connexion échouée, veuillez réessayer",
+    "loginFailed": "Identifiant ou mot de passe incorrect",
     "registerSuccess": "Compte créé avec succès",
     "registerFailed": "La création du compte a échoué, veuillez réessayer",
     "acceptTerms": "J'accepte les termes et conditions",
@@ -111,7 +111,11 @@
     "placeholderOldPassword": "Ancien mot de passe",
     "placeholderNewPassword": "Nouveau mot de passe",
     "description": "Pour des raisons de sécurité, vous devez confirmer votre mot de passe avant de continuer.",
-    "pleasewait": "Veuillez patienter..."
+    "pleasewait": "Veuillez patienter...",
+    "noAccountExists": "Aucun compte avec cet email",
+    "oldPasswordInvalid": "Le mot de passe actuel est invalide",
+    "PasswordResetSuccess": "Mot de passe réinitialisé",
+    "PasswordResetFailed": "La réinitialisation du mot de passe a échoué"
   },
   "SideBar":{
     "settings": "Reglages",
