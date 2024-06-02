@@ -12,31 +12,31 @@ export const metadata: Metadata = {
 };
 
 export default function LocaleLayout({
-                                       children,
-                                       params: { locale },
-                                     }: {
+  children,
+  params: { locale },
+}: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
   const messages = useMessages();
 
   return (
-      <html lang={locale}>
+    <html lang={locale}>
       <body>
-      <SessionProvider>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider
+        <SessionProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <ThemeProvider
               attribute="class"
               defaultTheme="system"
               enableSystem
               disableTransitionOnChange
-          >
-            {children}
-            <Toaster richColors position="top-right" />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </SessionProvider>
+            >
+              {children}
+              <Toaster richColors position="top-right" duration={2000} />
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </SessionProvider>
       </body>
-      </html>
+    </html>
   );
 }

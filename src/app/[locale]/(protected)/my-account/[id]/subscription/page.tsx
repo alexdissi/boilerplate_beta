@@ -1,25 +1,40 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { UserSettings } from "@/components/billing/userSettings";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { auth } from "@/lib/auth";
 
-export default function Page() {
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Gestion de l'abonnement</CardTitle>
-                <CardDescription>
-                        Bienvenue sur la page de gestion de votre abonnement. Ici, vous pouvez modifier votre abonnement à l'application
-                        selon vos besoins.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="flex flex-col gap-4">
-                    <UserSettings />
-                </div>
-            </CardContent>
-            <CardFooter className={"flex justify-center"}>
-                You can change your subscription here. <Link href={"/"}>Go back</Link>
-            </CardFooter>
-        </Card>
-    );
+export default async function Page() {
+  const t = await getTranslations("Subscription");
+  const session = await auth();
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
+        <CardDescription>
+          {t("currentPlan")}:&nbsp;{session?.user.plan} Plan
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-col gap-4">
+          <UserSettings />
+        </div>
+      </CardContent>
+      <CardFooter className={"flex justify-center"}>
+        {t("ChangePlan.description")}&nbsp;
+        <Link className={"underline font-semibold"} href={"/"}>
+          {t("ChangePlan.button")}
+        </Link>
+      </CardFooter>
+    </Card>
+  );
 }

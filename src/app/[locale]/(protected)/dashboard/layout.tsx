@@ -22,7 +22,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
       />
       <div className="flex flex-col flex-1 h-full">
         <Nav />
-        <main className="flex-1 overflow-auto p-8">{children}</main>
+        <main className="flex-1 overflow-auto p-8 bg-background">
+          {children}
+        </main>
       </div>
     </main>
   );

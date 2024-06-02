@@ -4,7 +4,6 @@
   },
   "Common": {
     "loading": "Chargement...",
-    "logout": "Déconnexion",
     "login": "Connexion",
     "register": "Inscription"
   },
@@ -121,5 +120,21 @@
     "tasks": "Taches",
     "calendar": "Calendrier",
     "messages": "Messages"
+  },
+  "Navigation": {
+    "logout": "Déconnexion",
+    "search": "Rechercher..."
+  },
+  "Subscription": {
+    "title": "Gestion de l'abonnement",
+    "description": "Bienvenue sur la page de gestion de votre abonnement. Ici, vous pouvez modifier votre abonnement à l'application selon vos besoins.",
+    "currentPlan": "Plan actuel",
+    "ChangePlan": {
+      "description": "Choisissez un plan qui correspond à vos besoins.",
+      "button": "Changer de plan"
+    },
+    "ManageSubscription": {
+      "button": "Gérer l'abonnement"
+    }
   }
 }

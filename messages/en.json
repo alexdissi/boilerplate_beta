@@ -120,5 +120,24 @@
     "tasks": "Tasks",
     "calendar": "Calendar",
     "messages": "Messages"
+  },
+  "Navigation": {
+    "logout": "Logout",
+    "search": "Search..."
+  },
+  "Subscription": {
+    "title": "Subscription Management",
+    "description": "Welcome to the subscription management page. Here, you can modify your application subscription according to your needs.",
+    "currentPlan": "Current Plan",
+    "ChangePlan": {
+      "title": "Change Plan",
+      "description": "Choose a plan that suits your needs.",
+      "button": "Change Plan"
+    },
+    "ManageSubscription": {
+      "title": "Manage Subscription",
+      "description": "Manage your current subscription.",
+      "button": "Manage Subscription"
+    }
   }
 }

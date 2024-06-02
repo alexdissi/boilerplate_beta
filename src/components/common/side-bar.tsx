@@ -43,7 +43,7 @@ export function SideBar({ profilPicture, username, id }: Sidebar) {
           <img src="/app_logo.png" alt="logo" className="w-20 h-16" />
           <Button
             variant="ghost"
-            className="text-gray-500 hover:bg-gray-800 hover:text-gray-50 duration-100"
+            className={`text-gray-500 hover:bg-gray-800 hover:text-gray-50 duration-100`}
             onClick={toggleSidebar}
           >
             {isExpanded ? <ArrowLeft /> : <ArrowRight />}
@@ -85,19 +85,17 @@ export function SideBar({ profilPicture, username, id }: Sidebar) {
             </Link>
           </div>
           <div className="flex flex-row items-center justify-center gap-4">
-            <div className="flex flex-row items-center gap-2">
-              <img
-                src={profilPicture}
-                alt={`Avatar of ${username}`}
-                className="w-10 h-10 rounded-full"
-              />
-              <p
-                className={`text-xs text-white ${isExpanded ? "flex" : "hidden"}`}
-              >
-                {username}
-              </p>
-            </div>
-            {isExpanded && <LogoutButton />}
+            {isExpanded && (
+              <div className="flex flex-row items-center gap-2">
+                <img
+                  src={profilPicture}
+                  alt={`Avatar of ${username}`}
+                  className="w-10 h-10 rounded-full"
+                />
+                <p className={`text-xs text-white`}>{username}</p>
+              </div>
+            )}
+            <LogoutButton />
           </div>
         </div>
       </motion.div>
